@@ -7,7 +7,7 @@ Settings::Settings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setCmbWorkTime();
+    setCmbBreakTime();
 }
 
 Settings::~Settings()
@@ -29,10 +29,10 @@ void Settings::on_buttonBox_rejected()
 
 void Settings::on_cmbWorkTime_currentIndexChanged(int index)
 {
-    setCmbWorkTime();
+    setCmbBreakTime();
 }
 
-void Settings::setCmbWorkTime()
+void Settings::setCmbBreakTime()
 {
     int valueCmbBreakTime = ui->cmbWorkTime->currentText().toInt() / 5;
     ui->lblBreakTime->setText(QString::number(valueCmbBreakTime));

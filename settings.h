@@ -29,7 +29,7 @@ class Settings : public QDialog
     private:
         Ui::Settings *ui;
 
-        void setCmbWorkTime();
+        void setCmbBreakTime();
 
 };
 
