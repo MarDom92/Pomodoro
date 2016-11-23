@@ -27,7 +27,7 @@ void Settings::on_buttonBox_rejected()
     this->close();
 }
 
-void Settings::on_cmbWorkTime_currentIndexChanged()
+void Settings::on_cmbWorkTime_currentIndexChanged(int index)
 {
     setCmbWorkTime();
 }

@@ -24,7 +24,7 @@ class Settings : public QDialog
 
         void on_buttonBox_rejected();
 
-        void on_cmbWorkTime_currentIndexChanged();
+        void on_cmbWorkTime_currentIndexChanged(int index);
 
     private:
         Ui::Settings *ui;
