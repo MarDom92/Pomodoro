@@ -7,7 +7,6 @@
 #include <QLabel>
 #include <QString>
 #include <QTimer>
-#include <QMessageBox>
 #include "settings.h"
 
 namespace Ui {
@@ -35,7 +34,7 @@ class MainWindow : public QMainWindow
 
         void updateLblTime();
 
-        void updateLabels();
+        void updateValues();
 
     private:
         Ui::MainWindow *ui;
@@ -51,7 +50,7 @@ class MainWindow : public QMainWindow
 
         QPalette *palette;
 
-        int color;
+        int color, volume;
 };
 
 #endif // MAINWINDOW_H

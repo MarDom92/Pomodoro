@@ -61,7 +61,24 @@ void Settings::setColor(int c)
     ui->cmbColor->setCurrentIndex(color);
 }
 
+int Settings::getVolume()
+{
+    return volume;
+}
+
+void Settings::setVolume(int v)
+{
+    volume = v;
+
+    ui->sliderVolume->setValue(volume);
+}
+
 void Settings::on_cmbColor_activated(int index)
 {
     color = ui->cmbColor->currentIndex();
+}
+
+void Settings::on_sliderVolume_valueChanged(int value)
+{
+    volume = value;
 }

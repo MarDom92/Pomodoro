@@ -27,6 +27,10 @@ class Settings : public QDialog
 
         void setColor(int c);
 
+        int getVolume();
+
+        void setVolume(int v);
+
     private slots:
         void on_buttonBox_accepted();
 
@@ -36,6 +40,8 @@ class Settings : public QDialog
 
         void on_cmbColor_activated(int index);
 
+        void on_sliderVolume_valueChanged(int value);
+
     signals:
         void pressedButtonBox();
 
@@ -44,7 +50,7 @@ class Settings : public QDialog
 
         int workTime, breakTime;
 
-        int color;
+        int color, volume;
 };
 
 #endif // SETTINGS_H

@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     palette = new QPalette();
     color = 3;
     setColorLblTime();
+
+    volume = 100;
 }
 
 MainWindow::~MainWindow()
@@ -36,9 +38,10 @@ void MainWindow::on_btnSettings_clicked()
 {
     settings = new Settings;
 
-    connect(settings, SIGNAL(pressedButtonBox()), this, SLOT(updateLabels()));
+    connect(settings, SIGNAL(pressedButtonBox()), this, SLOT(updateValues()));
     settings->setTimes(valueWorkTime);
     settings->setColor(color);
+    settings->setVolume(volume);
 
     settings->exec();
 }
@@ -88,7 +91,7 @@ void MainWindow::updateLblTime()
     }
 }
 
-void MainWindow::updateLabels()
+void MainWindow::updateValues()
 {
     valueWorkTime = settings->getWorkTime() * 60;
     valueBreakTime = valueWorkTime / 5;
@@ -111,6 +114,8 @@ void MainWindow::updateLabels()
 
     color = settings->getColor();
     setColorLblTime();
+
+    volume = settings->getVolume();
 }
 
 void MainWindow::updateWorkTime()
