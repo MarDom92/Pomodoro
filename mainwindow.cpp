@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     breakTime = valueBreakTime;
 
     caseTime = false;
+
+    palette = new QPalette();
+    color = 3;
+    setColorLblTime();
 }
 
 MainWindow::~MainWindow()
@@ -34,6 +38,7 @@ void MainWindow::on_btnSettings_clicked()
 
     connect(settings, SIGNAL(pressedButtonBox()), this, SLOT(updateLabels()));
     settings->setTimes(valueWorkTime);
+    settings->setColor(color);
 
     settings->exec();
 }
@@ -103,6 +108,9 @@ void MainWindow::updateLabels()
         strWorkTimeMinutes = "0" + QString::number(workTimeMinutes);
 
     ui->lblTime->setText(strWorkTimeMinutes + ":00");
+
+    color = settings->getColor();
+    setColorLblTime();
 }
 
 void MainWindow::updateWorkTime()
@@ -155,4 +163,32 @@ void MainWindow::updateBreakTime()
 
         ui->lblTime->setText(strBreakTimeMinutes + ":" + strBreakTimeSeconds);
     }
+}
+
+void MainWindow::setColorLblTime()
+{
+    switch(color)
+    {
+        case 0:
+            palette->setColor(QPalette::WindowText, Qt::white);
+        break;
+
+        case 1:
+            palette->setColor(QPalette::WindowText, Qt::black);
+        break;
+
+        case 2:
+            palette->setColor(QPalette::WindowText, QColor(244, 67, 54));
+        break;
+
+        case 3:
+            palette->setColor(QPalette::WindowText, QColor(63, 81, 181));
+        break;
+
+        case 4:
+            palette->setColor(QPalette::WindowText, QColor(76, 175, 80));
+        break;
+    }
+
+    ui->lblTime->setPalette(*palette);
 }

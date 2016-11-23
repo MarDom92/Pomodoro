@@ -23,12 +23,18 @@ class Settings : public QDialog
 
         void setTimes(int wTime);
 
+        int getColor();
+
+        void setColor(int c);
+
     private slots:
         void on_buttonBox_accepted();
 
         void on_buttonBox_rejected();
 
         void on_cmbWorkTime_currentIndexChanged(int index);
+
+        void on_cmbColor_activated(int index);
 
     signals:
         void pressedButtonBox();
@@ -37,6 +43,8 @@ class Settings : public QDialog
         Ui::Settings *ui;
 
         int workTime, breakTime;
+
+        int color;
 };
 
 #endif // SETTINGS_H

@@ -26,6 +26,8 @@ class MainWindow : public QMainWindow
 
         void updateBreakTime();
 
+        void setColorLblTime();
+
     private slots:
         void on_btnSettings_clicked();
 
@@ -46,6 +48,10 @@ class MainWindow : public QMainWindow
         bool caseTime;
 
         unsigned int workTime, breakTime, valueWorkTime, valueBreakTime;
+
+        QPalette *palette;
+
+        int color;
 };
 
 #endif // MAINWINDOW_H

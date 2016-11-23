@@ -48,3 +48,20 @@ void Settings::setTimes(int wTime)
     ui->cmbWorkTime->setCurrentText(QString::number(workTime));
     ui->lblBreakTime->setText(QString::number(breakTime));
 }
+
+int Settings::getColor()
+{
+    return color;
+}
+
+void Settings::setColor(int c)
+{
+    color = c;
+
+    ui->cmbColor->setCurrentIndex(color);
+}
+
+void Settings::on_cmbColor_activated(int index)
+{
+    color = ui->cmbColor->currentIndex();
+}
