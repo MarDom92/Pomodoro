@@ -235,7 +235,7 @@ void MainWindow::loadSystemSettings()
     valueWorkTime = systemSettings.value("valueWorkTime").toInt();
     valueBreakTime = systemSettings.value("valueBreakTime").toInt();
     color = systemSettings.value("color").toInt();
-    volume = systemSettings.value("volumee").toInt();
+    volume = systemSettings.value("volume").toInt();
 
     if(systemSettings.value("maximize", isMaximized()).toBool())
         showMaximized();
