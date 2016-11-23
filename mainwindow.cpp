@@ -12,8 +12,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(timer, SIGNAL(timeout()), this, SLOT(updateLblTime()));
 
-    workTime = 30 * 60;
-    breakTime = workTime / 6;
+    valueWorkTime = 30 * 60;
+    valueBreakTime = valueWorkTime / 5;
+
+    workTime = valueWorkTime;
+    breakTime = valueBreakTime;
 
     caseTime = false;
 }
@@ -21,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete timer;
-    delete settings;
 
     delete ui;
 }
@@ -29,14 +31,15 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnSettings_clicked()
 {
     settings = new Settings;
+
+    connect(settings, SIGNAL(pressedButtonBox()), this, SLOT(updateLabels()));
+    settings->setTimes(valueWorkTime);
+
     settings->exec();
 }
 
 void MainWindow::on_btnStart_clicked()
 {
-    workTime = 30 * 60;
-    breakTime = workTime / 6;
-
     caseTime = false;
 
     timer->start();
@@ -57,6 +60,8 @@ void MainWindow::updateLblTime()
         if(workTime == 0)
         {
             caseTime = true;
+
+            workTime = valueWorkTime;
         }
     }
     //break
@@ -70,10 +75,34 @@ void MainWindow::updateLblTime()
         {
             timer->stop();
 
+            breakTime = valueBreakTime;
+
             ui->btnStart->setEnabled(true);
             ui->btnSettings->setEnabled(true);
         }
     }
+}
+
+void MainWindow::updateLabels()
+{
+    valueWorkTime = settings->getWorkTime() * 60;
+    valueBreakTime = valueWorkTime / 5;
+
+    workTime = valueWorkTime;
+    breakTime = valueBreakTime;
+
+    int workTimeMinutes = workTime / 60;
+
+    ui->lblTitle->setText("Czas pracy:");
+
+    QString strWorkTimeMinutes;
+
+    if(workTimeMinutes > 9)
+        strWorkTimeMinutes = QString::number(workTimeMinutes);
+    else
+        strWorkTimeMinutes = "0" + QString::number(workTimeMinutes);
+
+    ui->lblTime->setText(strWorkTimeMinutes + ":00");
 }
 
 void MainWindow::updateWorkTime()

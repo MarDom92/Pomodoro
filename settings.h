@@ -19,6 +19,10 @@ class Settings : public QDialog
         explicit Settings(QWidget *parent = 0);
         ~Settings();
 
+        int getWorkTime();
+
+        void setTimes(int wTime);
+
     private slots:
         void on_buttonBox_accepted();
 
@@ -26,11 +30,13 @@ class Settings : public QDialog
 
         void on_cmbWorkTime_currentIndexChanged(int index);
 
+    signals:
+        void pressedButtonBox();
+
     private:
         Ui::Settings *ui;
 
-        void setCmbBreakTime();
-
+        int workTime, breakTime;
 };
 
 #endif // SETTINGS_H

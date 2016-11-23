@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QString>
 #include <QTimer>
+#include <QMessageBox>
 #include "settings.h"
 
 namespace Ui {
@@ -21,12 +22,18 @@ class MainWindow : public QMainWindow
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
 
+        void updateWorkTime();
+
+        void updateBreakTime();
+
     private slots:
         void on_btnSettings_clicked();
 
         void on_btnStart_clicked();
 
         void updateLblTime();
+
+        void updateLabels();
 
     private:
         Ui::MainWindow *ui;
@@ -38,11 +45,7 @@ class MainWindow : public QMainWindow
         //false - work, true - break
         bool caseTime;
 
-        unsigned int workTime, breakTime;
-
-        void updateWorkTime();
-
-        void updateBreakTime();
+        unsigned int workTime, breakTime, valueWorkTime, valueBreakTime;
 };
 
 #endif // MAINWINDOW_H
