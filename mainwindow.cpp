@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     palette = new QPalette();
     setColorLblTime();
+
+    ui->lblTime->setText(QString::number(valueWorkTime / 60) + ":00");
 }
 
 MainWindow::~MainWindow()
