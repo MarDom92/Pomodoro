@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QString>
 #include <QTimer>
+#include <QSettings>
 #include "settings.h"
 
 namespace Ui {
@@ -26,6 +27,10 @@ class MainWindow : public QMainWindow
         void updateBreakTime();
 
         void setColorLblTime();
+
+        void saveSystemSettings();
+
+        void loadSystemSettings();
 
     private slots:
         void on_btnSettings_clicked();

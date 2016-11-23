@@ -12,8 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(timer, SIGNAL(timeout()), this, SLOT(updateLblTime()));
 
-    valueWorkTime = 30 * 60;
-    valueBreakTime = valueWorkTime / 5;
+    loadSystemSettings();
 
     workTime = valueWorkTime;
     breakTime = valueBreakTime;
@@ -21,14 +20,13 @@ MainWindow::MainWindow(QWidget *parent) :
     caseTime = false;
 
     palette = new QPalette();
-    color = 3;
     setColorLblTime();
-
-    volume = 100;
 }
 
 MainWindow::~MainWindow()
 {
+    saveSystemSettings();
+
     delete timer;
 
     delete ui;
@@ -196,4 +194,51 @@ void MainWindow::setColorLblTime()
     }
 
     ui->lblTime->setPalette(*palette);
+}
+
+void MainWindow::saveSystemSettings()
+{
+    //organization's name and application's name
+    QSettings systemSettings("MD", "Pomodoro");
+
+    systemSettings.beginGroup("MainWindow");
+
+    systemSettings.setValue("geometry", saveGeometry());
+    systemSettings.setValue("state", saveState());
+    systemSettings.setValue("maximize", isMaximized());
+    systemSettings.setValue("valueWorkTime", valueWorkTime);
+    systemSettings.setValue("valueBreakTime", valueBreakTime);
+    systemSettings.setValue("color", color);
+    systemSettings.setValue("volume", volume);
+
+    if(!isMaximized())
+    {
+        systemSettings.setValue("position", pos());
+        systemSettings.setValue("size", size());
+    }
+
+    systemSettings.endGroup();
+}
+
+void MainWindow::loadSystemSettings()
+{
+    //organization's name and application's name
+    QSettings systemSettings("MD", "Pomodoro");
+
+    systemSettings.beginGroup("MainWindow");
+
+    restoreGeometry(systemSettings.value("geometry", saveGeometry()).toByteArray());
+    restoreState(systemSettings.value("state", saveState()).toByteArray());
+    move(systemSettings.value("position", pos()).toPoint());
+    resize(systemSettings.value("size", size()).toSize());
+
+    valueWorkTime = systemSettings.value("valueWorkTime").toInt();
+    valueBreakTime = systemSettings.value("valueBreakTime").toInt();
+    color = systemSettings.value("color").toInt();
+    volume = systemSettings.value("volumee").toInt();
+
+    if(systemSettings.value("maximize", isMaximized()).toBool())
+        showMaximized();
+
+    systemSettings.endGroup();
 }
