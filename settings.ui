@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Ustawienia</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -20,48 +20,147 @@
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="lblWorkTime">
+      <widget class="QLabel" name="lblTxtWorkTime">
        <property name="text">
         <string>Czas pracy:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="cmbWorkTime"/>
+      <widget class="QComboBox" name="cmbWorkTime">
+       <property name="currentText">
+        <string>30</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>15</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>20</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>25</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>30</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>40</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>50</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>60</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>90</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="lblBreakTime">
+      <widget class="QLabel" name="lblTxtBreakTime">
        <property name="text">
         <string>Czas przerwy:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="cmbBreakTime"/>
+      <widget class="QLabel" name="lblBreakTime">
+       <property name="text">
+        <string>6</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="lblVolume">
+      <widget class="QLabel" name="lblTxtVolume">
        <property name="text">
         <string>Głośność:</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QSlider" name="horizontalSlider">
+      <widget class="QSlider" name="sliderVolume">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>100</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="lblColor">
+      <widget class="QLabel" name="lblTxtColor">
        <property name="text">
         <string>Kolor odliczania:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QComboBox" name="cmbColor"/>
+      <widget class="QComboBox" name="cmbColor">
+       <property name="currentText">
+        <string>Czarny</string>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <property name="modelColumn">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Biały</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Czarny</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Czerwony</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Niebieski</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Zielony</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item row="4" column="1">
       <widget class="QDialogButtonBox" name="buttonBox">

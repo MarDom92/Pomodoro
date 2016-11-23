@@ -10,5 +10,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete settings;
+
     delete ui;
+}
+
+void MainWindow::on_btnSettings_clicked()
+{
+    settings = new Settings;
+    settings->exec();
 }
